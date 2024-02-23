@@ -1,9 +1,4 @@
 @extends('layouts.main-layout')
-@section('head')
-    <title>Home</title>
-@endsection
-@section('content')
-@extends('layouts.main-layout')
 
 @section('head')
     <title>Home</title>
@@ -33,6 +28,4 @@
             @endforeach
         </div>
     </div>
-@endsection
-
 @endsection
