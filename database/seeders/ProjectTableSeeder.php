@@ -18,7 +18,7 @@ class ProjectTableSeeder extends Seeder
     public function run()
     {
         Project::factory()
-                ->count(100)
+                ->count(50)
                 ->make()
                 ->each(function($project) {
 
