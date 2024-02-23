@@ -6,10 +6,10 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1 class="text-center">Creazione di un nuovo progetto</h1>
+        <h2 class="text-center">Creazione di un nuovo progetto</h2>
             <div class="row">
                 <div class="col-md-6 mb-4 mx-auto">
-                    <form action="#" method="post">
+                    <form action="{{ route('project.store') }}" method="post">
                         @csrf
                         @method('POST')
 
@@ -33,7 +33,20 @@
                             </div>
                             <input type="text" name="author" id="author">
                         </div>
+
+                        <div class="type d-flex mb-4">
+                            <div class="w-50">
+                                Tipo di Progetto:
+                            </div>
+                            <select name="type_id" id="type_id">
+                                @foreach ($types as $type)
+                                    <option value="{{ $type -> id}}">{{ $type -> name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <input class="btn btn-success" type="submit" value="Crea">
+
                     </form>
                 </div>
             </div>

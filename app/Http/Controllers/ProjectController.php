@@ -28,7 +28,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('pages.projects.create');
+        $types = Type :: all();
+
+        return view('pages.projects.create', compact('types'));
     }
 
     /**
@@ -39,7 +41,21 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request -> all();
+       
+        $type = Type :: find($data['type_id']);
+
+        $project = new Project();
+
+        $project -> name = $data['name'];
+        $project -> description = $data['description'];
+        $project -> author = $data['author'];
+
+        $project -> type() -> associate($type);
+
+        $project -> save();
+
+        return redirect() -> route('project.index');
     }
 
     /**
