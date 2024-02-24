@@ -45,6 +45,19 @@
                             </select>
                         </div>
 
+                        <div class="techno mb-4">
+                            <h5>Tecnologia:</h5>
+                            <div class="row">
+                                @foreach ($technologies as $index => $technology)
+                                    <div class="col-md-4">
+                                        <label class="checkbox-inline"> {{ $technology->name }}
+                                            <input type="checkbox" name="technology_id[]" value="{{ $technology->id }}">
+                                        </label>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        
                         <input class="btn btn-success" type="submit" value="Crea">
 
                     </form>

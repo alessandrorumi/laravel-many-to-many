@@ -29,8 +29,9 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type :: all();
+        $technologies = Technology :: all();
 
-        return view('pages.projects.create', compact('types'));
+        return view('pages.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -54,6 +55,8 @@ class ProjectController extends Controller
         $project -> type() -> associate($type);
 
         $project -> save();
+
+        $project -> technologies() -> attach($data['technology_id']);
 
         return redirect() -> route('project.index');
     }
