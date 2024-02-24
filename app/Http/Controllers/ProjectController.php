@@ -80,7 +80,11 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project :: find($id);
+        $types = Type :: all();
+        $technologies = Technology :: all();
+
+        return view('pages.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -92,7 +96,17 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request -> all();
+        
+        $project = Project :: find($id);
+        $type = Type :: find($data['type_id']);
+        
+        $project -> name = $data['name'];
+
+        $project -> type() -> associate($type);
+        $project -> save();
+        
+        $project -> technologies() -> sync($data['technology_id']);
     }
 
     /**

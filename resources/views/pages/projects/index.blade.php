@@ -15,6 +15,11 @@
                         <li class="list-group-item">
                             <h4>Nome del progetto:</h4>
                             <h3>{{ $project->name }}</h3>
+                            <h5>
+                                <a href="{{ route('project.edit', $project->id) }}">
+                                    Modifica
+                                </a>
+                            </h5>
                             <p>Descrizione: {{ $project->description }}</p>
                             <p>Autore: <i>{{ $project->author }}</i></p>
                             <p>Tipologia: <span class="badge bg-primary">{{ $project->type->name }}</span></p>
