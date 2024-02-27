@@ -69,7 +69,9 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        //
+        $project = Project :: find($id);
+
+        return view('pages.projects.show', compact('project'));
     }
 
     /**
@@ -107,6 +109,8 @@ class ProjectController extends Controller
         $project -> save();
         
         $project -> technologies() -> sync($data['technology_id']);
+
+        return redirect() -> route('project.index');
     }
 
     /**

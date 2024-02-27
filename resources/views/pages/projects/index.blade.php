@@ -14,13 +14,14 @@
                     <ul class="list-group">
                         <li class="list-group-item">
                             <h4>Nome del progetto:</h4>
-                            <h3>{{ $project->name }}</h3>
+                            <a class="link-underline link-underline-opacity-0" href="{{ route('project.show', $project->id) }}">
+                                <h3>{{ $project->name }}</h3>
+                            </a>
                             <h5>
                                 <a href="{{ route('project.edit', $project->id) }}">
                                     Modifica
                                 </a>
                             </h5>
-                            <p>Descrizione: {{ $project->description }}</p>
                             <p>Autore: <i>{{ $project->author }}</i></p>
                             <p>Tipologia: <span class="badge bg-primary">{{ $project->type->name }}</span></p>
                             <div>Tecnologia utilizzata:</div>
