@@ -50,11 +50,12 @@
                         <div class="techno mb-4">
                             <h5>Tecnologia:</h5>
                             <div class="row">
-                                @foreach ($technologies as $index => $technology)
+                                @foreach ($technologies as $technology)
                                     <div class="col-md-4">
-                                        <label class="checkbox-inline"> {{ $technology->name }}
-                                            <input type="checkbox" name="technology_id[]" value="{{ $technology->id }}">
-                                        </label>
+                                        <label class="checkbox-inline"> {{ $technology->name }}</label>
+                                        <input type="checkbox" 
+                                               name="technology_id[]" 
+                                               value="{{ $technology->id }}">
                                     </div>
                                 @endforeach
                             </div>

@@ -18,14 +18,14 @@ class TechnologyTableSeeder extends Seeder
     public function run()
     {
         Technology :: factory()
-                -> count(50)
-                -> create()
-                -> each(function($technology) {
-                
-                $projects = Project:: inRandomOrder() -> limit(rand(1, 5)) -> get();
-                $technology -> projects() -> attach($projects);
+            -> count(50)
+            -> create()
+            -> each(function($technology) {
+            
+            $projects = Project:: inRandomOrder() -> limit(rand(1, 5)) -> get();
+            $technology -> projects() -> attach($projects);
 
-                $technology -> save();
-                });
+            $technology -> save();
+        });
     }
 }
