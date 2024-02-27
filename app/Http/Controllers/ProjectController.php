@@ -121,6 +121,12 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project = Project :: find($id);
+
+        $project -> technologies() -> sync([]);
+
+        $project -> delete();
+
+        return redirect() -> route('project.index', compact('project'));
     }
 }

@@ -26,3 +26,6 @@ Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'])
 
 Route::patch('/projects/{id}', [ProjectController::class, 'update'])
     ->name('project.update');
+
+Route::delete('/project/{id}/destroy', [ProjectController::class, 'destroy'])
+->name('project.destroy');
