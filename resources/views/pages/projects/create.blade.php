@@ -9,7 +9,7 @@
         <h2 class="text-center">Creazione di un nuovo progetto</h2>
             <div class="row">
                 <div class="col-md-6 mb-4 mx-auto">
-                    <form action="{{ route('project.store') }}" method="post">
+                    <form action="{{ route('project.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
 
@@ -34,6 +34,13 @@
                                 <label for="author">Autore:</label>
                             </div>
                             <input type="text" name="author" id="author">
+                        </div>
+
+                        <div class="image d-flex mb-4">
+                            <div class="label w-50">
+                                <label for="image">Immagine:</label>
+                            </div>
+                            <input type="file" class="form-control-file" name="image" id="image" accept="image/*">
                         </div>
 
                         <div class="type d-flex mb-4">

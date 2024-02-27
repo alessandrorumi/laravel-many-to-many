@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('author');
+            $table -> string('image', 128) -> nullable();
 
             $table->timestamps();
         });

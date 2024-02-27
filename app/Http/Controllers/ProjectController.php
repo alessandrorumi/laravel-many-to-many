@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Project;
 use App\Models\Type;
@@ -46,11 +47,13 @@ class ProjectController extends Controller
        
         $type = Type :: find($data['type_id']);
 
+        $img_path = Storage :: put('images', $data['image']);
+    
         $project = new Project();
-
         $project -> name = $data['name'];
         $project -> description = $data['description'];
         $project -> author = $data['author'];
+        $project -> image = $img_path;
 
         $project -> type() -> associate($type);
 

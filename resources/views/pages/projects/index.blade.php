@@ -23,6 +23,9 @@
                             @foreach ($project->technologies as $technology)
                                 <p class="badge bg-secondary">{{ $technology->name }}</p>
                             @endforeach
+                            <div class="img">
+                                <img class="w-100" src="{{ asset('storage/' . $project->image) }}" alt="">
+                            </div>
                             <div class="btns d-flex justify-content-center mt-3">
                                 <a class="btn btn-warning me-3" href="{{ route('project.edit', $project->id) }}">Modifica</a>
                                 <form action="{{ route('project.destroy', $project->id) }}" method="POST">
