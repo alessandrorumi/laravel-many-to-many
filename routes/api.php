@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => '/v1'], function() {
 
-    Route::get('/mytest', [ApiController::class, 'GetMyTest']);
+    Route::get('/mytest', [ApiController::class, 'getMyTest']);
 
-
+    Route::get('/technologies', [ApiController::class, 'getTechnologies']);
 });
