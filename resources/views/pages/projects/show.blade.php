@@ -15,6 +15,9 @@
                     <p>Descrizione: {{ $project->description }}</p>
                     <p>Autore: <i>{{ $project->author }}</i></p>
                     <p>Tipologia: <span class="badge bg-primary">{{ $project->type->name }}</span></p>
+                    <div class="img">
+                        <img class="w-100" src="{{ asset('storage/' . $project->image) }}" alt="">
+                    </div>
                     <div>Tecnologia utilizzata:</div>
                     @foreach ($project->technologies as $technology)
                         <p class="badge bg-secondary">{{ $technology->name }}</p>
