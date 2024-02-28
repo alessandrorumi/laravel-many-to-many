@@ -109,6 +109,9 @@ class ProjectController extends Controller
         $img_path = Storage :: put('images', $data['image']);
         
         $project -> name = $data['name'];
+        $project -> description = $data['description'];
+        $project -> author = $data['author'];
+        $project -> image = $img_path;
 
         $project -> type() -> associate($type);
         $project -> save();
