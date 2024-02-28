@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+// La rotta completa è 'http://127.0.0.1:*porta*/api/*prefisso*/*rotta*'
+
+Route::group(['prefix' => '/v1'], function() {
+
+    Route::get('/mytest', [ApiController::class, 'GetMyTest']);
+
+
 });
