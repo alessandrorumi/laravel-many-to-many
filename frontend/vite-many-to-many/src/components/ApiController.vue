@@ -14,11 +14,8 @@ export default {
             }
         }
     },
-    methods: {
-        hideTechno() {
-            this.active = true
-        },
 
+    methods: {
         createNewTechnology() {
             axios.post('http://127.0.0.1:8000/api/v1/technologies', this.newTechnology)
                 .then(res => {
@@ -80,17 +77,16 @@ export default {
         </div>
 
         <div class="technologies" v-else>
-            <button @click="hideTechno">Aggiungi una tecnologia</button>
+            <button @click="active = true">Aggiungi una tecnologia</button>
             <div class="techno" v-for="technology in technologies">
                 <h2>{{ technology.name }}</h2>
                 <p>{{ technology.description }}</p>
             </div>
-        </div>
-
-        <div class="links">
-            <div v-for="page in pages" :key="page">
-                <button v-html="page.label" @click="changePage(page.url)"
-                    :class="page.active ? 'active-page' : ''"></button>
+            <div class="links">
+                <div v-for="page in pages" :key="page">
+                    <button v-if="page.url != null" v-html="page.label" @click="changePage(page.url)"
+                        :class="page.active ? 'active-page' : ''"></button>
+                </div>
             </div>
         </div>
     </div>
@@ -130,15 +126,11 @@ form>div {
 }
 
 .links>div {
-    margin: 0 1rem;
+    margin: 0 .5rem;
 }
 
 .active-page {
     background-color: #fff;
     color: #000;
-}
-
-.hidden {
-    display: none;
 }
 </style>
