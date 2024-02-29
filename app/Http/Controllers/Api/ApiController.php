@@ -19,7 +19,7 @@ class ApiController extends Controller
 
     public function getTechnologies() {
 
-        $technologies = Technology::all();
+        $technologies = Technology::paginate(8);
 
         return response()->json([
             'success' => true,

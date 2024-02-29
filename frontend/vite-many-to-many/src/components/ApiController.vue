@@ -6,6 +6,8 @@ export default {
         return {
             technologies: [],
             active: false,
+            currentPage: 1,
+            pages: [],
             newTechnology: {
                 name: 'Nome Tecnologia',
                 description: 'Descrizione Tecnologia',
@@ -28,18 +30,24 @@ export default {
                 .catch(err => {
                     console.error(err)
                 })
+        },
+
+        changePage(url) {
+            axios.get(url)
+                .then(res => {
+                    const data = res.data;
+                    this.currentPage = data.technologies.current_page;
+                    this.pages = data.technologies.links;
+                    this.technologies = data.technologies.data;
+                })
+                .catch(err => {
+                    console.error(err)
+                })
         }
     },
 
     mounted() {
-        axios.get('http://127.0.0.1:8000/api/v1/technologies')
-            .then(res => {
-                const data = res.data;
-                this.technologies = data.technologies;
-            })
-            .catch(err => {
-                console.error(err)
-            })
+        this.changePage('http://127.0.0.1:8000/api/v1/technologies')
     }
 
 }
@@ -78,6 +86,13 @@ export default {
                 <p>{{ technology.description }}</p>
             </div>
         </div>
+
+        <div class="links">
+            <div v-for="page in pages" :key="page">
+                <button v-html="page.label" @click="changePage(page.url)"
+                    :class="page.active ? 'active-page' : ''"></button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -106,5 +121,24 @@ form>div {
 .input {
     width: 60%;
     display: flex;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.links>div {
+    margin: 0 1rem;
+}
+
+.active-page {
+    background-color: #fff;
+    color: #000;
+}
+
+.hidden {
+    display: none;
 }
 </style>
